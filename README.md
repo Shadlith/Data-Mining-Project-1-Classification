@@ -9,7 +9,7 @@
 - Naive Bayes
 - Random Forrest (RF.py)
 - Decision Tree (DT.py)
-- Neural Network/Deep Learning 
+- Neural Network/Deep Learning (Neural.py)
 
 ## How to Run our Code 
 - 
