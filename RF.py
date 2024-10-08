@@ -29,6 +29,3 @@ print("Accuracy:", accuracy_score(y_test, y_pred))
 end = time.perf_counter()
 print("Time taken:", end-start)
 
-# Print predictions
-for j in range(0, y_pred.size):
-    print("Prediction: ", y_pred[j], " Real answer: ", y_test[j])
