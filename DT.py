@@ -1,7 +1,7 @@
 import pandas as pd 
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.model_selection import train_test_split
-from sklearn.metrics import accuracy_score
+from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score
 import time 
 
 start=time.perf_counter()
@@ -25,7 +25,26 @@ clf = clf.fit(X_train, y_train)
 y_pred = clf.predict(X_test)    
 
 # Model Accuracy 
+print("Test Set Metrics:")
 print("Accuracy:", accuracy_score(y_test, y_pred))
+print("Precision:", precision_score(y_test, y_pred, average='weighted'))
+print("Recall:", recall_score(y_test, y_pred, average='weighted'))
+print("F1 Score:", f1_score(y_test, y_pred, average='weighted'))
+
+# Full training set for final predictions 
+clf.fit(X, y)
+
+# Load test data 
+test_data =pd.read_csv('testing.csv')
+
+# Predictions for test data 
+test_predictions = clf.predict(test_data)
+
+# Save predictions 
+with open('DT_predictions.txt', 'w') as f:
+    f.write("Test Label\n")
+    for prediction in test_predictions:
+        f.write(f"{prediction}\n")
 
 end = time.perf_counter()
 print("Time taken:", end-start)

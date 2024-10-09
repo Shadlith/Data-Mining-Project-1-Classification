@@ -6,7 +6,7 @@
 ## Classifiers 
 - K Nearest Neighbor (KNN.py)
 - Support Vector Machines (SVM.py)
-- Naive Bayes
+- Naive Bayes (NaiveBayes.py)
 - Random Forrest (RF.py)
 - Decision Tree (DT.py)
 - Neural Network/Deep Learning (Neural.py)
