@@ -20,6 +20,7 @@ X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_
 # Normalize data
 X_train = X_train / 255.0
 X_test = X_test / 255.0
+
 num_classes = 100
 y_train_encoded = to_categorical(y_train, num_classes)
 y_test_encoded = to_categorical(y_test, num_classes)
