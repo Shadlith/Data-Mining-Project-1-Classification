@@ -26,19 +26,22 @@ y_test_encoded = to_categorical(y_test, num_classes)
 
 
 model = tf.keras.Sequential([
-    tf.keras.layers.Dense(units=64, activation='relu',
+    tf.keras.layers.Dense(units=512, activation='relu',
                          input_shape=[X_train.shape[1]]),
-    tf.keras.layers.Dropout(0.2),
-    tf.keras.layers.Dense(units=64, activation='relu'),
-    tf.keras.layers.Dropout(0.2),
+    tf.keras.layers.Dropout(0.5),
+    tf.keras.layers.Dense(units=512, activation='relu'),
+    tf.keras.layers.Dropout(0.5),
+    tf.keras.layers.Dense(units=512, activation='relu'),
+    tf.keras.layers.Dropout(0.5),
     tf.keras.layers.Dense(num_classes, activation='softmax')
 ])
+
 
 # Compile the model
 model.compile(optimizer='adam', loss='categorical_crossentropy')
 
 # Train Neural Network Classifier
-losses = model.fit(X_train, y_train_encoded, validation_data=(X_test, y_test_encoded), batch_size=256, epochs=50)
+losses = model.fit(X_train, y_train_encoded, validation_data=(X_test, y_test_encoded), batch_size=256, epochs=100)
 print(losses.history)
 
 # Predict the response for test dataset
@@ -55,7 +58,7 @@ print("F1 Score:", f1_score(y_test, y_pred, average='weighted'))
 # Full training set for final predictions 
 X_full = X / 255.0
 y_full_encoded = to_categorical(y, num_classes)
-model.fit(X_full, y_full_encoded, batch_size=256, epochs=50, verbose=0)
+model.fit(X_full, y_full_encoded, batch_size=256, epochs=100, verbose=0)
 
 # Load test data 
 test_data = pd.read_csv('testing.csv')
