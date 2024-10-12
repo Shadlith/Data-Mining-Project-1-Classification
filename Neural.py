@@ -21,28 +21,34 @@ X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_
 X_train = X_train / 255.0
 X_test = X_test / 255.0
 
-num_classes = 100
+num_classes = 10
 y_train_encoded = to_categorical(y_train, num_classes)
 y_test_encoded = to_categorical(y_test, num_classes)
 
+neurons_per_layer = 512
+dropout = 0.5
 
 model = tf.keras.Sequential([
-    tf.keras.layers.Dense(units=512, activation='relu',
+    tf.keras.layers.Dense(units=neurons_per_layer, activation='relu',
                          input_shape=[X_train.shape[1]]),
-    tf.keras.layers.Dropout(0.5),
-    tf.keras.layers.Dense(units=512, activation='relu'),
-    tf.keras.layers.Dropout(0.5),
-    tf.keras.layers.Dense(units=512, activation='relu'),
-    tf.keras.layers.Dropout(0.5),
+    tf.keras.layers.Dropout(dropout),
+    tf.keras.layers.Dense(units=neurons_per_layer, activation='relu'),
+    tf.keras.layers.Dropout(dropout),
+    tf.keras.layers.Dense(units=neurons_per_layer, activation='relu'),
+    tf.keras.layers.Dropout(dropout),
+    tf.keras.layers.Dense(units=neurons_per_layer, activation='relu'),
+    tf.keras.layers.Dropout(dropout),
     tf.keras.layers.Dense(num_classes, activation='softmax')
 ])
 
 
 # Compile the model
-model.compile(optimizer='adam', loss='categorical_crossentropy')
+model.compile(optimizer='adam', loss='categorical_crossentropy', metrics=['accuracy'])
+
+early_stopping_cb = tf.keras.callbacks.EarlyStopping(monitor='val_accuracy', patience=15, restore_best_weights=True)
 
 # Train Neural Network Classifier
-losses = model.fit(X_train, y_train_encoded, validation_data=(X_test, y_test_encoded), batch_size=256, epochs=100)
+losses = model.fit(X_train, y_train_encoded, validation_data=(X_test, y_test_encoded), batch_size=128, epochs=100, callbacks=[early_stopping_cb])
 print(losses.history)
 
 # Predict the response for test dataset
@@ -59,7 +65,7 @@ print("F1 Score:", f1_score(y_test, y_pred, average='weighted'))
 # Full training set for final predictions 
 X_full = X / 255.0
 y_full_encoded = to_categorical(y, num_classes)
-model.fit(X_full, y_full_encoded, batch_size=256, epochs=100, verbose=0)
+#model.fit(X_full, y_full_encoded, batch_size=256, epochs=100, verbose=0)
 
 # Load test data 
 test_data = pd.read_csv('testing.csv')
