@@ -26,7 +26,7 @@ y_train_encoded = to_categorical(y_train, num_classes)
 y_test_encoded = to_categorical(y_test, num_classes)
 
 neurons_per_layer = 512
-dropout = 0.5
+dropout = 0.3
 
 model = tf.keras.Sequential([
     tf.keras.layers.Dense(units=neurons_per_layer, activation='relu',
@@ -43,12 +43,13 @@ model = tf.keras.Sequential([
 
 
 # Compile the model
+opt = tf.keras.optimizers.Adam(learning_rate=0.0001)
 model.compile(optimizer='adam', loss='categorical_crossentropy', metrics=['accuracy'])
 
-early_stopping_cb = tf.keras.callbacks.EarlyStopping(monitor='val_accuracy', patience=15, restore_best_weights=True)
+early_stopping_cb = tf.keras.callbacks.EarlyStopping(monitor='val_accuracy', patience=20, restore_best_weights=True)
 
 # Train Neural Network Classifier
-losses = model.fit(X_train, y_train_encoded, validation_data=(X_test, y_test_encoded), batch_size=128, epochs=100, callbacks=[early_stopping_cb])
+losses = model.fit(X_train, y_train_encoded, validation_data=(X_test, y_test_encoded), batch_size=128, epochs=200, callbacks=[early_stopping_cb])
 print(losses.history)
 
 # Predict the response for test dataset
