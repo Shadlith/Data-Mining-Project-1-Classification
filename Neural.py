@@ -68,7 +68,7 @@ test_predictions = np.argmax(test_predictions_encoded, axis=1)
 
 # Save predictions
 with open('Neural_predictions.txt', 'w') as f:
-    f.write('TestLabel\n')
+    f.write('Test Label\n')
     for prediction in test_predictions:
         f.write(f"{prediction}\n")
 

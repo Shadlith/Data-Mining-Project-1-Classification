@@ -26,4 +26,4 @@ python KNN.py
 ```
 
 ### **Note:**
-- Must have python, tensorflow, and scikit learn installed on system. 
+- Must have python, tensorflow, and scikit-learn installed on system. 
