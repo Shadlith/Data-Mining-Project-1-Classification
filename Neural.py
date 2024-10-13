@@ -44,7 +44,7 @@ model = tf.keras.Sequential([
 
 # Compile the model
 opt = tf.keras.optimizers.Adam(learning_rate=0.0001)
-model.compile(optimizer='adam', loss='categorical_crossentropy', metrics=['accuracy'])
+model.compile(optimizer=opt, loss='categorical_crossentropy', metrics=['accuracy'])
 
 early_stopping_cb = tf.keras.callbacks.EarlyStopping(monitor='val_accuracy', patience=20, restore_best_weights=True)
 
