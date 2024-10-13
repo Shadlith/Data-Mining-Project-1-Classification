@@ -34,7 +34,7 @@ test_data =pd.read_csv('testing.csv')
 test_predictions = gnb.predict(test_data)
 
 # Save predictions 
-with open('GNB_predictions.txt', 'w') as f:
+with open('NB_predictions.txt', 'w') as f:
     f.write("Test Label\n")
     for prediction in test_predictions:
         f.write(f"{prediction}\n")
@@ -42,6 +42,8 @@ with open('GNB_predictions.txt', 'w') as f:
 
 end = time.perf_counter()
 print("Time taken:", end-start)
+
+print()
 
 """ 
 correct = 0

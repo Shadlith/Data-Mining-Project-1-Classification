@@ -25,11 +25,12 @@ clf = clf.fit(X_train, y_train)
 y_pred = clf.predict(X_test)    
 
 # Model Accuracy 
-print("Decision TreeTest Set Metrics:")
+print("Decision Tree Test Set Metrics:")
 print("Accuracy:", accuracy_score(y_test, y_pred))
 print("Precision:", precision_score(y_test, y_pred, average='weighted'))
 print("Recall:", recall_score(y_test, y_pred, average='weighted'))
 print("F1 Score:", f1_score(y_test, y_pred, average='weighted'))
+
 
 # Full training set for final predictions 
 clf.fit(X, y)
@@ -49,3 +50,4 @@ with open('DT_predictions.txt', 'w') as f:
 end = time.perf_counter()
 print("Time taken:", end-start)
 
+print()

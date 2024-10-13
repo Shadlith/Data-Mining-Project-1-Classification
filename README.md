@@ -26,12 +26,11 @@ python KNN.py
 ```
 
 ## Output for the classifier codes:
-- A performance metrics that will be output in the terminal that includes the accuracy, precision, recall, and F1 score. 
-- A .txt file will also output that includes for each of the images in the test set, output a single line containing the digit you predict. 
+- A performance metrics that will be output in the terminal that includes the accuracy, precision, recall, and F1 score. A time taken will also be output.
+- A .txt file will be created that includes for each of the images in the test set, output a single line containing the digit you predict. 
 
 ## How to run compare file:
-The compare file runs all six classifications at once to output the precision metrics for each classification
-and comparison figure for the accuracy. Note that this file takes a few minutes to compile.
+The compare file runs all six classifications at once to output the comparison figure and values for the accuracy. Note that this file takes a few minutes to compile due to compiling all six of the classifications.
 1. Press the Run button in IDE, such as Visual Studio Code. 
 2. In the terminal,
 

@@ -84,3 +84,5 @@ with open('Neural_predictions.txt', 'w') as f:
 
 end = time.perf_counter()
 print("Time taken:", end-start)
+
+print()

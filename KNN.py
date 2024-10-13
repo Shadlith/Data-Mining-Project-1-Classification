@@ -54,6 +54,8 @@ with open('KNN_predictions.txt', 'w') as f:
 end = time.perf_counter()
 print("Time taken:", end-start)
 
+print()
+
 # Print predictions
 #for j in range(0, train_preds.size):
 #    print("Prediction: ", train_preds[j], " Real answer: ", yTest[j])
