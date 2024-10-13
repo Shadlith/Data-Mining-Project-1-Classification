@@ -18,7 +18,7 @@ model = gnb.fit(xTrain, yTrain)
 yPred = model.predict(xTest)
 
 # Model Accuracy 
-print("Test Set Metrics:")
+print("Naive Bayes Test Set Metrics:")
 print("Accuracy:", accuracy_score(yTest, yPred))
 print("Precision:", precision_score(yTest, yPred, average='weighted'))
 print("Recall:", recall_score(yTest, yPred, average='weighted'))

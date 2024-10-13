@@ -30,7 +30,7 @@ knn_model.fit(xTrain, yTrain)
 train_preds = knn_model.predict(xTest)
 
 # Model Accuracy 
-print("Test Set Metrics:")
+print("Nearest Neighbors Test Set Metrics:")
 print("Accuracy:", accuracy_score(yTest, train_preds))
 print("Precision:", precision_score(yTest, train_preds, average='weighted'))
 print("Recall:", recall_score(yTest, train_preds, average='weighted'))

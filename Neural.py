@@ -57,7 +57,7 @@ y_pred_encoded = model.predict(X_test)
 y_pred = np.argmax(y_pred_encoded, axis=1)
 
 # Model Accuracy 
-print("Test Set Metrics:")
+print("Neural Network Test Set Metrics:")
 print("Accuracy:", accuracy_score(y_test, y_pred))
 print("Precision:", precision_score(y_test, y_pred, average='weighted'))
 print("Recall:", recall_score(y_test, y_pred, average='weighted'))
